@@ -5,13 +5,15 @@
 // function UserSignUp(req, res){
 //     res.json({status:true, message :"inside signup"})   
 // }
-const {Users} = require('../models/user.model')
+const {User} = require('../models/user.model')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const UserSignUp= async (req , res) =>{
   try{
     const secret = process.env.SECRET
-    const {userDetails} = req.body
+    
+    const { userDetails } = req.body
+    
     const newUser = new User(userDetails)
     const salt = await bcrypt.genSalt(10)
     newUser.password = await bcrypt.hash(newUser.password , salt)
@@ -30,10 +32,11 @@ const UserSignUp= async (req , res) =>{
 }
 
 const UserSignIn = async (req , res) =>{
-  try{
+  try {
     const secret = process.env.SECRET
-    const {userDetails} = req.body
-    const ourUser = await Users.findOne({username : userDetails.username})
+    const { userDetails } = req.body
+    console.log("user details are ", userDetails)
+    const ourUser = await User.findOne({username : userDetails.username})
     if(ourUser){
       const validPassword = await bcrypt.compare(userDetails.password, ourUser.password);
       if(validPassword){
