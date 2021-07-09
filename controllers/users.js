@@ -35,7 +35,6 @@ const UserSignIn = async (req , res) =>{
   try {
     const secret = process.env.SECRET
     const { userDetails } = req.body
-    console.log("user details are ", userDetails)
     const ourUser = await User.findOne({username : userDetails.username})
     if(ourUser){
       const validPassword = await bcrypt.compare(userDetails.password, ourUser.password);
