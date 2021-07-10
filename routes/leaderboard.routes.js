@@ -15,5 +15,15 @@ LeaderboardRouter.post('/publish', async (req, res) => {
     }
 })
 
-
+LeaderboardRouter.get('/get', async (req, res) => {
+    try {
+        const leaderBoardData = await Leaderboard.find({})
+        res.json({ status: true, message: "leaderboard fetched successfully", data: leaderBoardData })
+        
+    }
+    catch (error) {
+        res.json({status: false, message: "Error occured while fetching leaderboard", errMessage: error.message})
+    }
+    
+})
 module.exports = {LeaderboardRouter}
