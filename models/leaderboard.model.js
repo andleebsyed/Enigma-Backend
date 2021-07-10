@@ -1,4 +1,4 @@
-const mongoose = require('momgoose')
+const mongoose = require('mongoose')
 const { Schema, model } = mongoose
 
 const LeaderboardSchema = Schema({
