@@ -3,7 +3,7 @@ const cors = require('cors')
 require('dotenv').config()
 const { DbConnection } = require('./db/dbConnection');
 const { UserRouter } = require('./routes/user.routes');
-const {InsertDataToDatabase} = require('./controllers/quizCategoriesAdd')
+// const {InsertDataToDatabase} = require('./controllers/quizCategoriesAdd')
 const app = express()
 const PORT = 9000;
 // connecting to mongodb
