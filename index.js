@@ -3,6 +3,7 @@ const cors = require('cors')
 require('dotenv').config()
 const { DbConnection } = require('./db/dbConnection');
 const { UserRouter } = require('./routes/user.routes');
+const {LeaderboardRouter} = require('./routes/leaderboard.routes')
 // const {InsertDataToDatabase} = require('./controllers/quizCategoriesAdd')
 const app = express()
 const PORT = 9000;
@@ -16,5 +17,6 @@ app.get('/', (req, res) => {
     res.json({status:true, message:"welcome to the homeage of my rest api"})
 })
 
-app.use('/user',UserRouter )
+app.use('/user', UserRouter)
+app.use('/leaderboard', LeaderboardRouter)
 app.listen(process.env.PORT || PORT, () => console.log("app is up and running"))
