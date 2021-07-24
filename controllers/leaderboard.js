@@ -7,7 +7,7 @@ async function GetUsersFromLeaderboard(req, res) {
         
     }
     catch (error) {
-        res.json({status: false, message: "Error occured while fetching leaderboard", errMessage: error.message})
+        res.json({status: false, message: "Error occured while fetching leaderboard", errorDetail: error.message})
     }
     
 }
@@ -18,13 +18,12 @@ async function SaveUserToLeaderboard(req, res) {
 
     try {
         const {userData} = req.body
-       console.log({userData})
        const newUser = new Leaderboard(userData)
        const response = await newUser.save()
-       res.json({status: true, message: "user added to leaderboard successfully", response})
+       res.json({status: true, message: "user added to leaderboard successfully"})
     }
    catch (error) {
-       res.status(500).json({status: false, message: "Error occured while saving user to Leaderboard", errMessage: error.message  })
+       res.status(500).json({status: false, message: "Error occured while saving user to Leaderboard", errorDetail: error.message  })
     }
 }
 

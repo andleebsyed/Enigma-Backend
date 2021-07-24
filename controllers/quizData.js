@@ -5,7 +5,7 @@ async function QuizData(req, res) {
         res.json({status: true, message: "data fetched successfully", quizCategories: quizData})
     }
     catch (error) {
-        res.status(500).json({status: false, message: "Error occurred while fetching quiz data", errMessage: error.message})
+        res.status(500).json({status: false, message: "Error occurred while fetching quiz data", errorDetail: error.message})
     }
 }
 

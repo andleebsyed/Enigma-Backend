@@ -19,7 +19,7 @@ const UserSignUp= async (req , res) =>{
     newUser.password = await bcrypt.hash(newUser.password , salt)
     const savedUser = await newUser.save()
     const token = jwt.sign({userId : savedUser._id}, secret, {expiresIn : '24h'})
-    res.json({status : true  , message : 'user added successfully' , token})
+    res.json({status : true  , message : 'user added successfully' , token, username: newUser.username})
   }
   catch(error){
     if(error.code === 11000){
@@ -40,7 +40,7 @@ const UserSignIn = async (req , res) =>{
       const validPassword = await bcrypt.compare(userDetails.password, ourUser.password);
       if(validPassword){
         const token = jwt.sign({userId: ourUser._id}, secret, {expiresIn : '24h'})
-        res.json({status : true  , allowUser : true , message : "logged in successfully" , token
+        res.json({status : true  , allowUser : true , message : "logged in successfully" , token, username: userDetails.username
       })
       }
     else{
@@ -53,7 +53,7 @@ const UserSignIn = async (req , res) =>{
 
   }
   catch(error){
-    res.json({status : false , errorDetail : error , errorMesssage : error.message})
+    res.json({status : false , message : "Couldn't sign In" , errorDetail : error.message})
   }
 
 }
