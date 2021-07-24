@@ -1,10 +1,3 @@
-
-// function UserSignIn(req, res) {
-//     res.json({status:true, message :"inside signin"})
-// }
-// function UserSignUp(req, res){
-//     res.json({status:true, message :"inside signup"})   
-// }
 const {User} = require('../models/user.model')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')

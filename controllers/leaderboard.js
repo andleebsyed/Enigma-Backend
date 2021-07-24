@@ -12,10 +12,7 @@ async function GetUsersFromLeaderboard(req, res) {
     
 }
 
-
 async function SaveUserToLeaderboard(req, res) {
-    
-
     try {
         const {userData} = req.body
        const newUser = new Leaderboard(userData)

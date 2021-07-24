@@ -1,4 +1,3 @@
-// import { QuizCategory } from "../models/quizCategory.model";
 const {QuizCategory} = require('../models/quizCategory.model')
 const quizCategoriesData =
   [{quizName : "Marvel Fanatic?",
