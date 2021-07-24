@@ -5,6 +5,7 @@ const { DbConnection } = require('./db/dbConnection');
 const { UserRouter } = require('./routes/user.routes');
 const {LeaderboardRouter} = require('./routes/leaderboard.routes');
 const { QuizDataRouter } = require('./routes/quizData.routes');
+const { verifyToken } = require('./middlewares/verifyToken');
 // const {InsertDataToDatabase} = require('./controllers/quizCategoriesAdd')
 const app = express()
 const PORT = 9000;
@@ -19,5 +20,5 @@ app.get('/', (req, res) => {
 })
 app.use('/quizdata', QuizDataRouter)
 app.use('/user', UserRouter)
-app.use('/leaderboard', LeaderboardRouter)
+app.use('/leaderboard',verifyToken, LeaderboardRouter)
 app.listen(process.env.PORT || PORT, () => console.log("app is up and running"))
