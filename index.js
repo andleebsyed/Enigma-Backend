@@ -16,7 +16,7 @@ DbConnection()
 app.use(cors())
 app.use(express.json())
 app.get('/', (req, res) => {
-    res.json({status:true, message:"welcome to the homeage of my rest api"})
+    res.json({status:true, message:"welcome to the homepage of rest-api for enigma(Quiz app)"})
 })
 app.use('/quizdata', QuizDataRouter)
 app.use('/user', UserRouter)
