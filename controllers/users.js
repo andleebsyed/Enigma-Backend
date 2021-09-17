@@ -85,15 +85,12 @@ const UserSignIn = async (req, res) => {
 
 const GuestAccess = async (req, res) => {
   try {
-    console.log("cming here");
     const secret = process.env.SECRET;
     const userId = mongoose.Types.ObjectId("6143715cb9a36d0022d122c9");
     const ourUser = await User.findById(userId);
-    // console.log({ ourUser });
     const token = jwt.sign({ userId: ourUser._id }, secret, {
       expiresIn: "24h",
     });
-    // console.log({ token });
     res.json({
       status: true,
       allowUser: true,
